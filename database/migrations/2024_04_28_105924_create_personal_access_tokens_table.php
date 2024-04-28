@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->uuid('id')->primary(); 
-            $table->string('name');
+        Schema::create('personal_access_tokens', function (Blueprint $table) {
+            $table->uuidMorphs('tokenable'); 
             $table->timestamps();
         });
     }
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('personal_access_tokens');
     }
 };
